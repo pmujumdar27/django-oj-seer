@@ -1,0 +1,16 @@
+{% extends "seer/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Problem Submission</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div>
+                <button types="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

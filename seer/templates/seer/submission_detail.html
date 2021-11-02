@@ -1,0 +1,17 @@
+{% extends "seer/base.html" %}
+{% block content %}
+    <ul>
+        <li>Submission ID: {{object.id}}</li>
+        <li>Problem: {{object.problem_id}}</li>
+        <li>User: {{object.user_id}}</li>
+        <li>Language: {{object.language}}</li>
+        <li>Submission Time: {{object.submit_time}}</li>
+        <li>Status: {{object.status}}</li>
+    </ul>
+    Code:
+    <p>
+        <pre>
+            {{object.code}}
+        </pre>
+    </p>
+{% endblock %}

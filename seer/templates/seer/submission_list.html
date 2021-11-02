@@ -1,0 +1,30 @@
+{% extends "seer/base.html" %}
+{% load bootstrap %}
+
+{% block content %}
+    <form method="GET">
+        {{filter.form|bootstrap}}
+        <button type="submit">Submit</button>
+    </form>
+    <table align="center" border="1">
+        <tr>
+            <th>Submission ID</th>
+            <th>Problem ID</th>
+            <th>User ID</th>
+            <th>Language</th>
+            <th>Status</th>
+            <th>Submission Time</th>
+        </tr>
+
+        {% for submission in filter.qs %}
+        <tr>
+            <td><a href="{% url 'submission-detail' submission.id %}">{{submission.id}}</a></td>
+            <td>{{submission.problem_id}}</td>
+            <td>{{submission.user_id}}</td>
+            <td>{{submission.language}}</td>
+            <td>{{submission.status}}</td>
+            <td>{{submission.submit_time}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

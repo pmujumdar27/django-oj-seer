@@ -1,0 +1,9 @@
+{% extends "seer/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+        <h2><a class="article-title" href="{% url 'problem-list' %}">Problems</a></h2>
+        <h2><a class="article-title" href="{% url 'submission-list' %}">Submissions</a></h2>
+        </div>
+    </article>
+{% endblock content %}

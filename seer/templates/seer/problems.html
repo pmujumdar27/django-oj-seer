@@ -1,0 +1,33 @@
+{% extends "seer/base.html" %}
+{% load bootstrap %}
+
+
+{% block content %}
+    <form method="GET">
+        {{filter.form|bootstrap}}
+        <button type="submit">Submit</button>
+    </form>
+    <center>
+        <h2>All Problems</h2>
+    </center>
+    <table align="center" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Rating</th>
+        </tr>
+        {% for problem in filter.qs %}
+            <tr>
+                <td>
+                    <a href="{% url 'problem-detail' problem.id %}">{{ problem.title }}</a>
+                </td>
+                <td>
+                    {{problem.author.username}}
+                </td>
+                <td>
+                    {{problem.rating}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

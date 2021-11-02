@@ -1,0 +1,47 @@
+{% extends "seer/base.html" %}
+{% block content %}
+    <center>
+        <h2 class="article-title">
+            {{ object.title }}
+        </h2>
+        <div class="article-metadata">
+                Rated: {{ object.rating }}
+                Author: <a href="#" class="mr-2">{{ object.author }}</a>
+                {% if object.author == user %}
+                <a href="{% url 'problem-update' object.id %}">Update Problem</a>
+                {% endif %}
+        </div>
+    </center>
+    <hr>
+    <div class="media-body">
+        <p class="article-content">
+            {{ object.statement }}
+        </p>
+        <hr>
+        <h5>
+            Input Constraints:
+        </h5>
+        <p>
+            {{ object.input_constraints }}
+        </p>
+        <h5>
+            Sample Input:
+        </h5>
+        <code>
+            <pre>
+                {{ object.sample_input }}
+            </pre>
+        </code>
+        <h5>
+            Sample Output:
+        </h5>
+        <code>
+            <pre>
+                {{ object.sample_output }}
+            </pre>
+        </code>
+    
+        <a href="{% url 'problem-submit' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1">Submit</a>
+
+    </div>
+{% endblock %}

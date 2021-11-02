@@ -1,0 +1,3 @@
+Comparing files op.txt and OUR_OP.TXT
+FC: no differences encountered
+

@@ -1,0 +1,46 @@
+{% load static %}
+
+<!Doctype html>
+
+<html>
+    <head>
+        {% if title %}
+        <title>SeerOJ - {{title}}</title>
+        {% else %}
+        <title>SeerOJ</title>
+        {% endif %}
+    </head>
+
+    <body>
+        
+        <header>
+            <nav>
+                <ul>
+                    <div>
+                        <li><a href="{% url 'seer-home' %}">SeerOJ</a></li>
+                        <li><a href="{% url 'seer-about' %}">About</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Profile: {{user.username}}</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="{% url 'problem-create' %}">New Problem</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
+                    </div>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% if messages  %}
+                {% for message in messages %}
+                    <div>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>
